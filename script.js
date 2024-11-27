@@ -27,15 +27,20 @@ form.addEventListener("submit", function (event) {
         eve.preventDefault ();
         let inputmodif= document.createElement("input");    // je crée un input qui va premettre à l'utilisateur d'écrire
         inputmodif.type ="text";                            //je modifie le type de mon input en texte
-        inputmodif.id = "inputmodifier";                    // je donne un id à mon input //je veux récupérer mon first child puis l'afficher dans mon input (donner id à first child ou l'appeler direct?)
-        let childli = document
-        //let modifli = document.getElementById("inputmodifier");
-        //inputmodif.value = firstElementChild.textContent
-        //let inputli = li.value; child
+        inputmodif.id = "inputmodifier";                    // je donne un id à mon input
+        inputmodif.value = li.firstChild.textContent        // avec .value on récupère la valeur du champ text de mon first child du li et je le met en valeur de l'input
         li.appendChild (inputmodif)                         // je met mon input dans mon li  je dois récupérer mon input
 
-        //let modifli = document.getElementById("inputmodifier");
-        //modifli.firstElementChild.textContent; 
+
+        let butonthree = document.createElement ("button");       // Je crée un bouton 
+        let sauvegarder = document.createTextNode ("Sauvegarder");    // Je crée le texte que je veuc mettre dans mon bouton
+        butonthree.appendChild (sauvegarder);                        // Je met mon texte dans mon bouton
+        li.appendChild (butonthree)                               //je mets mon bouton dans mon li
+
+        butonthree.addEventListener("click", function (eve) {     // je crée une fonction qui va me servir à quand je clique sur mon bouton on peut modifier mon li 
+            eve.preventDefault ();
+            li.replaceWith(inputmodif)
     })
     
+})
 })
